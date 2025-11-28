@@ -1,18 +1,24 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
 
-# Other files and folders
-.settings/
+const students = [
+  { name: "Rahul", dob: "2004-11-28" },
+  { name: "Meena", dob: "2005-03-10" }
+];
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+function checkBirthdays() {
+  const today = new Date();
+  const d = today.getDate();
+  const m = today.getMonth() + 1;
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+  students.forEach(s => {
+    const date = new Date(s.dob);
+    if (date.getDate() === d && date.getMonth() + 1 === m) {
+      showToast(`🎉 Today is ${s.name}'s Birthday!`);
+    }
+  });
+}
+
+function showToast(msg) {
+  alert(msg); // Replace with toast in UI frameworks
+}
+
+checkBirthdays();
